@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <title>나의 농비티아이는?</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <style>
+    body {
+      font-family: sans-serif;
+      text-align: center;
+      background-color: #f9f5f0;
+      margin: 0;
+      padding: 20px;
+    }
+    .question {
+      display: none;
+    }
+    .question.active {
+      display: block;
+    }
+    .choice-img {
+      width: 80%;
+      max-width: 300px;
+      margin: 10px;
+      border-radius: 15px;
+      border: 3px solid #ddd;
+      cursor: pointer;
+    }
+    .progress {
+      width: 100%;
+      background-color: #ddd;
+      border-radius: 10px;
+      overflow: hidden;
+      height: 10px;
+      margin: 20px 0;
+    }
+    .progress-bar {
+      height: 10px;
+      background-color: #4CAF50;
+      width: 0%;
+    }
+  </style>
+</head>
+<body>
+  <h1>🚜 나의 농비티아이는?</h1>
+  <div class="progress"><div class="progress-bar" id="progress-bar"></div></div>
+  
+  <form id="quiz-form" method="POST" action="/result">
+    <div id="question-container"></div>
+    <div id="answers"></div>
+  </form>
+
+  <script>
+    const questions = [
+      {
+        q: "산 vs 평지",
+        options: [
+          { text: "산", value: 1, img: "/static/q1_a.jpg" },
+          { text: "평지", value: 0, img: "/static/q1_b.jpg" }
+        ]
+      },
+      {
+        q: "감자 vs 쌀",
+        options: [
+          { text: "감자", value: 1, img: "/static/q2_a.jpg" },
+          { text: "쌀", value: 0, img: "/static/q2_b.jpg" }
+        ]
+      },
+      {
+        q: "고라니 vs 왜가리",
+        options: [
+          { text: "고라니", value: 1, img: "/static/q3_a.jpg" },
+          { text: "왜가리", value: 0, img: "/static/q3_b.jpg" }
+        ]
+      },
+      {
+        q: "나는 자연인이다 vs 리틀포레스트",
+        options: [
+          { text: "나는 자연인이다", value: 1, img: "/static/q4_a.jpg" },
+          { text: "리틀포레스트", value: 0, img: "/static/q4_b.jpg" }
+        ]
+      },
+      {
+        q: "동 vs 서",
+        options: [
+          { text: "동", value: 1, img: "/static/q5_a.jpg" },
+          { text: "서", value: 0, img: "/static/q5_b.jpg" }
+        ]
+      },
+      {
+        q: "차박 vs 드라이브",
+        options: [
+          { text: "차박", value: 1, img: "/static/q6_a.jpg" },
+          { text: "드라이브", value: 0, img: "/static/q6_b.jpg" }
+        ]
+      },
+      {
+        q: "C vs G",
+        options: [
+          { text: "C", value: 1, img: "/static/q7_a.jpg" },
+          { text: "G", value: 0, img: "/static/q7_b.jpg" }
+        ]
+      }
+    ];
+
+    let current = 0;
+    const questionContainer = document.getElementById("question-container");
+    const form = document.getElementById("quiz-form");
+    const answersDiv = document.getElementById("answers");
+
+    function updateProgress() {
+      const bar = document.getElementById("progress-bar");
+      const percent = ((current) / questions.length) * 100;
+      bar.style.width = percent + "%";
+    }
+
+    function showQuestion(index) {
+      questionContainer.innerHTML = "";
+      updateProgress();
+
+      const q = questions[index];
+      const div = document.createElement("div");
+      div.className = "question active";
+
+      const title = document.createElement("h2");
+      title.innerText = `${index + 1}. ${q.q}`;
+      div.appendChild(title);
+
+      q.options.forEach(opt => {
+        const img = document.createElement("img");
+        img.src = opt.img;
+        img.alt = opt.text;
+        img.className = "choice-img";
+        img.onclick = () => {
+          // 선택값 hidden input으로 저장
+          let input = document.createElement("input");
+          input.type = "hidden";
+          input.name = `q${index + 1}`;
+          input.value = opt.value;
+          answersDiv.appendChild(input);
+
+          // 다음 질문 or 제출
+          current++;
+          if (current < questions.length) {
+            showQuestion(current);
+          } else {
+            form.submit();
+          }
+        };
+        div.appendC
+
+        
