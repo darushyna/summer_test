@@ -58,6 +58,17 @@
   <img src="{{ url_for('static', filename=image) }}" class="result-img">
   <br><br>
   <a href="/" class="btn">다시하기</a>
-  <a href="https://summer-test-9ok2.onrender.com" class="btn" target="_blank">공유하기</a>
+  <button class="btn" onclick="shareResult()">공유하기</button>
+
+  <script>
+    function shareResult() {
+      const url = "https://summer-test-9ok2.onrender.com";  // 고정 배포 주소
+      navigator.clipboard.writeText(url).then(() => {
+        alert("공유 링크가 복사되었습니다!\n친구들에게 붙여넣어 공유해보세요!");
+      }).catch(err => {
+        alert("복사 실패 😢 다시 시도해주세요.");
+      });
+    }
+  </script>
 </body>
 </html>
