@@ -4,6 +4,14 @@
   <meta charset="UTF-8">
   <title>결과</title>
   <link href="https://fonts.googleapis.com/css2?family=Gowun+Dodum&display=swap" rel="stylesheet">
+  
+  <!-- Open Graph 메타 태그 -->
+  <meta property="og:title" content="나의 농비티아이는? 결과 확인" />
+  <meta property="og:description" content="나의 농비티아이 결과를 확인하고 친구들에게 공유해보세요!" />
+  <meta property="og:image" content="https://summer-test-9ok2.onrender.com/static/thumbnail.png" />
+  <meta property="og:url" content="https://summer-test-9ok2.onrender.com" />
+  <meta property="og:type" content="website" />
+
   <style>
     body {
       font-family: 'Gowun Dodum', sans-serif;
@@ -46,16 +54,16 @@
   </style>
 </head>
 <body>
-  <h2>{{ result }}</h2>
+  <h2>{{ result | safe }}</h2>
   <img src="{{ url_for('static', filename=image) }}" class="result-img">
   <br><br>
-  <a href="/" class="btn">다시 하기</a>
-  <button class="btn" onclick="shareResult()">결과 공유하기</button>
+  <a href="/" class="btn">다시하기</a>
+  <button class="btn" onclick="shareResult()">공유하기</button>
 
   <script>
     function shareResult() {
       const text = "{{ result }}";
-      const url = window.location.origin;
+      const url = "https://summer-test-9ok2.onrender.com";  // 고정 배포 주소
       const shareText = `${text}\n결과를 보러 가기: ${url}`;
 
       navigator.clipboard.writeText(shareText).then(() => {
@@ -67,3 +75,4 @@
   </script>
 </body>
 </html>
+
