@@ -6,7 +6,7 @@
   <link href="https://fonts.googleapis.com/css2?family=Gowun+Dodum&display=swap" rel="stylesheet">
   
   <!-- Open Graph 메타 태그 -->
-  <meta property="og:title" content="나의 농BTI는? 결과 확인" />
+  <meta property="og:title" content="나의 농BTI는?" />
   <meta property="og:description" content="나의 농BTI 결과를 확인하고 친구들에게 공유해보세요!" />
   <meta property="og:image" content="https://summer-test-9ok2.onrender.com/static/thumbnail.png" />
   <meta property="og:url" content="https://summer-test-9ok2.onrender.com" />
@@ -30,6 +30,7 @@
       margin-top: 50px;
     }
     .btn {
+      all: unset;  /* 기본 스타일 제거 */
       display: inline-block;
       margin-top: 20px;
       padding: 30px 40px;
@@ -37,13 +38,12 @@
       background-color: #4CAF50;
       color: white;
       text-decoration: none;
-      border: none;
       border-radius: 8px;
       cursor: pointer;
       transition: background-color 0.3s;
+      text-align: center;
     }
     .btn:hover {
-      padding: 30px 40px;
       background-color: #45a049;
     }
     .btn-wide {
@@ -51,14 +51,14 @@
       margin-top: 20px;
       padding: 30px 40px;
       font-size: 3em;
-      background-color: #FF9800; /* 원하는 색상 */
+      background-color: #FF9800;
       color: white;
       text-decoration: none;
-      border: none;
       border-radius: 8px;
       cursor: pointer;
       transition: background-color 0.3s;
-      width: calc(400px); /* 다시하기 + 공유하기 버튼 너비(예: 300px * 2) */
+      text-align: center;
+      width: 600px; /* 다시하기 + 공유하기 너비 */
     }
     .btn-wide:hover {
       background-color: #e68a00;
