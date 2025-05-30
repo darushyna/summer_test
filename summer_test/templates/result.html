@@ -6,8 +6,8 @@
   <link href="https://fonts.googleapis.com/css2?family=Gowun+Dodum&display=swap" rel="stylesheet">
   
   <!-- Open Graph 메타 태그 -->
-  <meta property="og:title" content="나의 농비티아이는? 결과 확인" />
-  <meta property="og:description" content="나의 농비티아이 결과를 확인하고 친구들에게 공유해보세요!" />
+  <meta property="og:title" content="나의 농BTI는? 결과 확인" />
+  <meta property="og:description" content="나의 농BTI 결과를 확인하고 친구들에게 공유해보세요!" />
   <meta property="og:image" content="https://summer-test-9ok2.onrender.com/static/thumbnail.png" />
   <meta property="og:url" content="https://summer-test-9ok2.onrender.com" />
   <meta property="og:type" content="website" />
@@ -33,17 +33,34 @@
       display: inline-block;
       margin-top: 20px;
       padding: 30px 40px;
+      font-size: 3em;
       background-color: #4CAF50;
       color: white;
       text-decoration: none;
       border: none;
       border-radius: 8px;
-      font-size: 3em;
       cursor: pointer;
       transition: background-color 0.3s;
     }
     .btn:hover {
       background-color: #45a049;
+    }
+    .btn-wide {
+      display: inline-block;
+      margin-top: 20px;
+      padding: 30px 40px;
+      font-size: 3em;
+      background-color: #FF9800; /* 원하는 색상 */
+      color: white;
+      text-decoration: none;
+      border: none;
+      border-radius: 8px;
+      cursor: pointer;
+      transition: background-color 0.3s;
+      width: calc(600px); /* 다시하기 + 공유하기 버튼 너비(예: 300px * 2) */
+    }
+    .btn-wide:hover {
+      background-color: #e68a00;
     }
     .result-img {
       width: 600px;
@@ -56,6 +73,9 @@
 <body>
   <h2>{{ result | safe }}</h2>
   <img src="{{ url_for('static', filename=image) }}" class="result-img">
+  <br><br>
+  <!-- 신청하기 버튼 추가 -->
+  <a href="https://forms.gle/BcEuxDCNjMTbgC3E9" target="_blank" class="btn-wide">수련회 신청하기</a>
   <br><br>
   <a href="/" class="btn">다시하기</a>
   <button class="btn" onclick="shareResult()">공유하기</button>
